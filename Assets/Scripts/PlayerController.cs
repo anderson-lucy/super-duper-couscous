@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float movementHorizontal = 0;
-        float movementVertical = 0;
+        //float movementVertical = 0;
         Vector2 vel = rb.velocity;
         vel.x = Input.GetAxis("Horizontal") * speed;
 
@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         //logic for if it hits a trampoline then single/double/triple jump automatically
         //logic for running into a mole -- starting over
         //add in camera stuff
+        //variable for amount of times it takes to kill the enemy in the enemy script
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -82,6 +83,15 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (col.gameObject.CompareTag("Trampoline"))
+        {
+            Vector2 vel = rb.velocity;
+            Debug.Log("TRAMPOLINE JUMP");
+            Debug.Log(jumpforce);
+            vel.x = Input.GetAxis("Horizontal") * speed;
+            vel.y = jumpforce * 2;
+            rb.velocity = vel;
         }
     }
 
