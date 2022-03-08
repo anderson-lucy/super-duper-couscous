@@ -227,30 +227,30 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: -2.5244127e-29
-      e01: 38.374695
-      e02: 3.89e-41
-      e03: 8.4383567e-10
-      e10: 7.64e-43
+      e00: 1.084227e-19
+      e01: -1.0467589e+38
+      e02: -2.5258282e-29
+      e03: -3.6584187
+      e10: 7.99e-43
       e11: 4.5904e-41
-      e12: 7.67e-43
-      e13: 7.64e-43
+      e12: 8e-43
+      e13: 7.97e-43
       e20: 6e-45
-      e21: 1.2877052e+34
-      e22: 1.2875963e+34
-      e23: 1.2875963e+34
+      e21: 0.0011958554
+      e22: 0.001195753
+      e23: 0.001195753
       e30: 0
-      e31: 3.05e-43
-      e32: 3.05e-43
-      e33: 3.05e-43
+      e31: 1.15e-43
+      e32: 1.15e-43
+      e33: 1.15e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 2.3929e-41, g: 2.3929e-41, b: 2.3929e-41, a: 2.3929e-41}
+    m_Data: {r: 3.2891e-41, g: 3.2891e-41, b: 3.2891e-41, a: 3.2891e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -5, y: -4, z: 0}
-  m_Size: {x: 7, y: 4, z: 1}
+  m_Origin: {x: -6, y: -4, z: 0}
+  m_Size: {x: 8, y: 5, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -484,7 +484,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -631224381
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
