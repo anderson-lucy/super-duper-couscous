@@ -9,6 +9,7 @@ public class PlayerAnimation : MonoBehaviour
         Idle,
         Walk,
         Jump,
+        Crouch,
         Hammer
     }
 
@@ -16,6 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     public Sprite[] idleAnimation;
     public Sprite[] walkAnimation;
     public Sprite[] jumpAnimation;
+    public Sprite[] crouchAnimation;
     public Sprite[] hammerAnimation;
 
     private Rigidbody2D rb2d;
@@ -39,6 +41,7 @@ public class PlayerAnimation : MonoBehaviour
         animationAtlas.Add(AnimationState.Idle, idleAnimation);
         animationAtlas.Add(AnimationState.Walk, walkAnimation);
         animationAtlas.Add(AnimationState.Jump, jumpAnimation);
+        animationAtlas.Add(AnimationState.Crouch, crouchAnimation);
         animationAtlas.Add(AnimationState.Hammer, hammerAnimation);
     }
 
@@ -80,10 +83,20 @@ public class PlayerAnimation : MonoBehaviour
 
     AnimationState GetAnimationState()
     {
-        if (!controller.grounded)
+        if (!controller.grounded && state != AnimationState.Crouch)
+        {
+            Debug.Log("Crouch Up");
+            return AnimationState.Crouch;
+        }
+        if (!controller.grounded && state == AnimationState.Crouch)
         {
             Debug.Log("Jumping");
             return AnimationState.Jump;
+        }
+        if (controller.grounded && state == AnimationState.Jump)
+        {
+            Debug.Log("Crouch Down");
+            return AnimationState.Crouch;
         }
         if (Mathf.Abs(rb2d.velocity.x) > 0.1f)
         {
