@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        else if (col.gameObject.CompareTag("Trampoline"))
+        else if (col.gameObject.CompareTag("Trampoline") && rb.velocity.y < 0.0f)
         {
             Vector2 vel = rb.velocity;
             vel.x = Input.GetAxis("Horizontal") * speed;
