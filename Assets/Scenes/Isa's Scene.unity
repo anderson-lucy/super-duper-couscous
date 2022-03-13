@@ -582,14 +582,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  jumpforce: 10
+  jumpforce: 4
   grounded: 1
   tramp: 0
   hammer: 0
   hammerWaitTime: 0.5
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   groundRayLength: 0.1
   groundRaySpread: 0.1
   right: {fileID: -44823127607029351, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
