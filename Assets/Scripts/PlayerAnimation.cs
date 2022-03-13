@@ -19,11 +19,12 @@ public class PlayerAnimation : MonoBehaviour
     public Sprite[] jumpAnimation;
     public Sprite[] crouchAnimation;
     public Sprite[] hammerAnimation;
+    public bool isCrouching = false;
 
     private Rigidbody2D rb2d;
     private SpriteRenderer sRenderer;
-    //private PlayerController controller;
-    private TestController controller;
+    private PlayerController controller;
+    //private TestController controller;
 
     private float frameTimer = 0;
     private int frameIndex = 0;
@@ -34,8 +35,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         sRenderer = GetComponent<SpriteRenderer>();
-        //controller = GetComponent<PlayerController>();
-        controller = GetComponent<TestController>();
+        controller = GetComponent<PlayerController>();
+        //controller = GetComponent<TestController>();
 
         animationAtlas = new Dictionary<AnimationState, Sprite[]>();
         animationAtlas.Add(AnimationState.Idle, idleAnimation);
@@ -83,29 +84,26 @@ public class PlayerAnimation : MonoBehaviour
 
     AnimationState GetAnimationState()
     {
-        if (!controller.grounded && state != AnimationState.Crouch)
+        if ((!controller.grounded) && !isCrouching)
         {
-            Debug.Log("Crouch Up");
+            isCrouching = true;
             return AnimationState.Crouch;
         }
-        if (!controller.grounded && state == AnimationState.Crouch)
+        if ((!controller.grounded) && isCrouching)
         {
-            Debug.Log("Jumping");
             return AnimationState.Jump;
         }
-        if (controller.grounded && state == AnimationState.Jump)
+        if (controller.grounded && isCrouching)
         {
-            Debug.Log("Crouch Down");
+            isCrouching = false;
             return AnimationState.Crouch;
         }
         if (Mathf.Abs(rb2d.velocity.x) > 0.1f)
         {
-            Debug.Log("Walking");
             return AnimationState.Walk;
         }
         if (controller.hammer)
         {
-            Debug.Log("Hammer");
             return AnimationState.Hammer;
         }
         return AnimationState.Idle;
