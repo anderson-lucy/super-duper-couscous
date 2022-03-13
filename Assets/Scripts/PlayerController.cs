@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spr;
     public bool grounded = false;
     public bool tramp = false;
+    public bool hammer = false;
+    public float hammerWaitTime;
 
 
     [Header("Grounding")]
@@ -70,11 +72,11 @@ public class PlayerController : MonoBehaviour
         }
         rb.velocity = vel;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             //hit the thing
             Debug.Log("HIT");
-
+            StartCoroutine(HammerHit(hammerWaitTime));
         }
         
     }
@@ -102,7 +104,16 @@ public class PlayerController : MonoBehaviour
        // {
             Debug.Log("BOTTOMMMMM");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-       // }
+        // }
+
+        // makes you bounce when you hit an enemy
+        Vector2 vel = rb.velocity;
+        if (col.tag == "Enemy" && vel.y < 0.0f)
+        {
+            Debug.Log("collide with enemy");
+            vel.y = jumpforce / 2;
+        }
+        rb.velocity = vel;
     }
 
 
@@ -128,5 +139,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
-   
+    IEnumerator HammerHit(float time)
+    {
+        hammer = true;
+        yield return new WaitForSeconds(time);
+        hammer = false;
+    }
 }

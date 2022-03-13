@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 782011088}
   - component: {fileID: 782011091}
   - component: {fileID: 782011092}
+  - component: {fileID: 782011093}
   m_Layer: 7
   m_Name: Walk1
   m_TagString: Untagged
@@ -580,15 +581,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522593477172b4d8bacd7b7dc8720017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  jumpforce: 5
-  grounded: 0
+  speed: 6
+  jumpforce: 10
+  grounded: 1
   tramp: 0
+  hammer: 0
+  hammerWaitTime: 0.5
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   groundRayLength: 0.1
-  groundRaySpread: 0.6
+  groundRaySpread: 0.1
   right: {fileID: -44823127607029351, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
 --- !u!60 &782011092
 PolygonCollider2D:
@@ -606,7 +609,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000036, y: 0.0014996846}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.4375, y: 1.875}
     newSize: {x: 1.4375, y: 1.875}
     adaptiveTilingThreshold: 0.5
@@ -622,6 +625,38 @@ PolygonCollider2D:
       - {x: 0.7187495, y: -0.0028119087}
       - {x: 0.7187495, y: 1.1221881}
       - {x: 0.46874952, y: 1.6846881}
+--- !u!114 &782011093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782011087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a119cd131d1f4d909edd4bed5bb4bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationFPS: 6
+  idleAnimation:
+  - {fileID: -6750833213837955896, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: 4306821331191535576, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  walkAnimation:
+  - {fileID: -44823127607029351, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: 496875413014950537, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: 5376171166155491694, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: -3154875890460419712, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: 5376171166155491694, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: 496875413014950537, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  jumpAnimation:
+  - {fileID: -740969679381260821, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  crouchAnimation:
+  - {fileID: -7675710440452611682, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  hammerAnimation:
+  - {fileID: 4866940783672343453, guid: 3e6d60d48b1c945bfa1ae15b970bc117, type: 3}
+  - {fileID: 7189186329465727109, guid: 3e6d60d48b1c945bfa1ae15b970bc117, type: 3}
+  - {fileID: -5336037334550525388, guid: 3e6d60d48b1c945bfa1ae15b970bc117, type: 3}
+  isCrouching: 0
 --- !u!1 &820823284
 GameObject:
   m_ObjectHideFlags: 0
