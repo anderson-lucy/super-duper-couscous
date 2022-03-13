@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Trampoline
+<<<<<<< Updated upstream
+=======
+  - Bottom
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,13 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< Updated upstream
   - Ground
   - 
+=======
+  - 
+  - Player
+>>>>>>> Stashed changes
   - 
   - 
   - 

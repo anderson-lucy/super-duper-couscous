@@ -10,11 +10,15 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     private SpriteRenderer spr;
     public bool grounded = false;
+    public bool tramp = false;
 
-    //sprites
-    public Sprite hammer1;
-    public Sprite hammer2;
-    public Sprite hammer3;
+
+    [Header("Grounding")]
+    public LayerMask groundMask;
+    public float groundRayLength = 0.1f;
+    public float groundRaySpread = 0.1f;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,18 +36,25 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float movementHorizontal = 0;
-        //float movementVertical = 0;
         Vector2 vel = rb.velocity;
         vel.x = Input.GetAxis("Horizontal") * speed;
 
         spr.sprite = right;
         //maybe make only a set jump amount
+
         UpdateGrounding();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) && grounded) //also implement double jumping
+        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded /*&& !isJumping*/) //also implement double jumping
         {
             Debug.Log("JUMP");
             vel.y = jumpforce;
+
+        }
+        if (Input.GetKeyDown(KeyCode.W) && grounded /*&& !isJumping*/)
+        {
+            Debug.Log("JUMP with W");
+            vel.y = jumpforce;
+
         }
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
@@ -63,19 +74,9 @@ public class PlayerController : MonoBehaviour
         {
             //hit the thing
             Debug.Log("HIT");
-            //changing the animations -- look up the video on this
-            spr.sprite = hammer1;
-            spr.sprite = hammer2;
-            spr.sprite = hammer3;
-            //also detect a collision with an enemy using tags
-            //implement animations
-        }
 
-        //check tag for bar -- if out of bounds then reload the scene (or if they run into a mole or obstacle)
-        //logic for if it hits a trampoline then single/double/triple jump automatically
-        //logic for running into a mole -- starting over
-        //add in camera stuff
-        //variable for amount of times it takes to kill the enemy in the enemy script
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -84,26 +85,48 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (col.gameObject.CompareTag("Trampoline"))
+        else if (col.gameObject.CompareTag("Trampoline"))
         {
             Vector2 vel = rb.velocity;
-            Debug.Log("TRAMPOLINE JUMP");
             Debug.Log(jumpforce);
             vel.x = Input.GetAxis("Horizontal") * speed;
             vel.y = jumpforce * 2;
             rb.velocity = vel;
-        }
+
+        } 
+        
     }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+       // if (col.gameObject.CompareTag("Bottom")
+       // {
+            Debug.Log("BOTTOMMMMM");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       // }
+    }
+
 
     void UpdateGrounding()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down);
-        //if we have collided with a surface
-        if (hit.collider != null)
+        Vector3 rayStart = transform.position + Vector3.up * groundRayLength;
+        Vector3 rayStartLeft = transform.position + Vector3.left * groundRaySpread;
+        Vector3 rayStartRight = transform.position + Vector3.right * groundRaySpread;
+
+        RaycastHit2D hit = Physics2D.Raycast(rayStart, Vector3.down, groundRayLength * 2, groundMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(rayStartLeft, Vector3.down, groundRayLength * 2, groundMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(rayStartRight, Vector3.down, groundRayLength * 2, groundMask);
+
+        if (hit.collider != null || hitLeft.collider != null || hitRight.collider != null)
         {
+            Debug.Log("HIIII");
             grounded = true;
+        } else
+        {
+            grounded = false;
         }
-        grounded = false;
+       
+        
     }
 
+   
 }
