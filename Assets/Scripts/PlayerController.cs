@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
     public float jumpforce = 0;
+    public float trampJumpForce = 0;
     Rigidbody2D rb;
-    private SpriteRenderer spr;
+    //private SpriteRenderer spr;
     public bool grounded = false;
     public bool tramp = false;
     public bool hammer = false;
@@ -26,13 +27,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spr = GetComponent<SpriteRenderer>();
+        //spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     //public Sprite left;
 
-    public Sprite right;
+    //public Sprite right;
 
 
     void Update()
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
         Vector2 vel = rb.velocity;
         vel.x = Input.GetAxis("Horizontal") * speed;
 
-        spr.sprite = right;
+        //spr.sprite = right;
         //maybe make only a set jump amount
 
         UpdateGrounding();
@@ -62,14 +63,20 @@ public class PlayerController : MonoBehaviour
         {
             movementHorizontal = speed;
 
-            spr.flipX = false;
+            //spr.flipX = false;
         }
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             movementHorizontal = -speed;
 
-            spr.flipX = true;
+            //spr.flipX = true;
         }
+        //come down from jump faster if down key is pressed
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && !grounded)
+        {
+            vel.y = -1 * jumpforce;
+        }
+
         rb.velocity = vel;
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
@@ -90,9 +97,8 @@ public class PlayerController : MonoBehaviour
         else if (col.gameObject.CompareTag("Trampoline"))
         {
             Vector2 vel = rb.velocity;
-            Debug.Log(jumpforce);
             vel.x = Input.GetAxis("Horizontal") * speed;
-            vel.y = jumpforce * 2;
+            vel.y = trampJumpForce;
             rb.velocity = vel;
 
         } 
@@ -107,13 +113,13 @@ public class PlayerController : MonoBehaviour
         // }
 
         // makes you bounce when you hit an enemy
-        Vector2 vel = rb.velocity;
-        if (col.tag == "Enemy" && vel.y < 0.0f)
-        {
-            Debug.Log("collide with enemy");
-            vel.y = jumpforce / 2;
-        }
-        rb.velocity = vel;
+        //Vector2 vel = rb.velocity;
+        //if (col.tag == "Enemy" && vel.y < 0.0f)
+        //{
+        //    Debug.Log("collide with enemy");
+        //    vel.y = jumpforce / 2;
+        //}
+        //rb.velocity = vel;
     }
 
 
