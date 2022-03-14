@@ -147,8 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationFPS: 6
   idleAnimation:
-  - {fileID: -6750833213837955896, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
   - {fileID: 4306821331191535576, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
+  - {fileID: -6750833213837955896, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
   walkAnimation:
   - {fileID: -44823127607029351, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
   - {fileID: 496875413014950537, guid: 8c45d301fbbb345e1ac9889b9ae0702b, type: 3}
