@@ -9,8 +9,8 @@ public class GroundMole : MonoBehaviour
     public float hurtWaitTime;
 
     private SpriteRenderer sRenderer;
-    private int maxHitCount = 1;
-    private int hitCount = 0;
+    //private int maxHitCount = 1;
+    //private int hitCount = 0;
 
     void Start()
     {
@@ -22,18 +22,24 @@ public class GroundMole : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void Hurt()
     {
-        if (collision.tag == "Player" && collision.attachedRigidbody.velocity.y < 0.0f && hitCount < maxHitCount)
-        {
-            StartCoroutine(hurtSequence(hurtWaitTime));
-        }
+        Debug.Log("hurt");
+        StartCoroutine(hurtSequence(hurtWaitTime));
     }
+
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player" && collision.attachedRigidbody.velocity.y < 0.0f && hitCount < maxHitCount)
+    //    {
+    //        StartCoroutine(hurtSequence(hurtWaitTime));
+    //    }
+    //}
 
     IEnumerator hurtSequence(float time)
     {
         sRenderer.GetComponent<BoxCollider2D>().enabled = false;
-        hitCount++;
+        //hitCount++;
         sRenderer.sprite = hurtAnimation[0];
         yield return new WaitForSeconds(time);
         sRenderer.sprite = hurtAnimation[1];
