@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float trampJumpForce = 0;
     Rigidbody2D rb;
 
-    public bool grounded = false;
+    
     public bool tramp = false;
     public bool hammer = false;
     public float hammerWaitTime;
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Grounding")]
+    public bool grounded = false;
     public LayerMask groundMask;
     public float groundRayLength = 0.1f;
     public float groundRaySpread = 0.1f;
@@ -152,4 +153,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         tramp = false;
     }
+    //need a way to tell if all moles are hit
+    //and then share this info with flower that turns into a door
 }
