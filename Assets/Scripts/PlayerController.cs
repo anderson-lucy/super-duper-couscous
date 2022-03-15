@@ -9,16 +9,17 @@ public class PlayerController : MonoBehaviour
     public float jumpforce = 0;
     public float trampJumpForce = 0;
     Rigidbody2D rb;
-    //private SpriteRenderer spr;
+
     public bool grounded = false;
     public bool tramp = false;
     public bool hammer = false;
     public float hammerWaitTime;
+    public float trampAnimTime;
 
     [Header("Attacking")]
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    
+    public LayerMask enemyLayer;
 
 
     [Header("Grounding")]
@@ -35,46 +36,23 @@ public class PlayerController : MonoBehaviour
         //spr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    //public Sprite left;
-
-    //public Sprite right;
-
 
     void Update()
     {
-        float movementHorizontal = 0;
         Vector2 vel = rb.velocity;
         vel.x = Input.GetAxis("Horizontal") * speed;
-
-        //spr.sprite = right;
-        //maybe make only a set jump amount
 
         UpdateGrounding();
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded /*&& !isJumping*/) //also implement double jumping
         {
-            Debug.Log("JUMP");
             vel.y = jumpforce;
 
         }
         if (Input.GetKeyDown(KeyCode.W) && grounded /*&& !isJumping*/)
         {
-            Debug.Log("JUMP with W");
             vel.y = jumpforce;
 
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            movementHorizontal = speed;
-
-            //spr.flipX = false;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            movementHorizontal = -speed;
-
-            //spr.flipX = true;
         }
         //come down from jump faster if down key is pressed
         if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && !grounded)
@@ -82,29 +60,45 @@ public class PlayerController : MonoBehaviour
             vel.y = -1 * jumpforce;
         }
 
+        Vector3 attackPos = attackPoint.transform.localPosition;
+        if (vel.x < 0.0f)
+        {
+            attackPos.x = -1;
+        }
+        if (vel.x > 0.0f)
+        {
+            attackPos.x = 1;
+        }
+        attackPoint.transform.localPosition = attackPos;
+
         rb.velocity = vel;
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
-            //hit the thing
-            Debug.Log("HIT");
             StartCoroutine(HammerHit(hammerWaitTime));
+            Collider2D[] enemyHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+
+            foreach(Collider2D enemy in enemyHit)
+            {
+                enemy.GetComponent<Enemy>().Hurt();
+            }
         }
         
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Enemy")) //we can also make an enemy layer if we want
+        if (col.gameObject.CompareTag("Enemy"))
         {
-            if (hammer)
-            {
-                Debug.Log("HURT ENEMY");
-                Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
-            } else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else if (col.gameObject.CompareTag("Trampoline") && rb.velocity.y < 0.0f)
         {
@@ -112,24 +106,17 @@ public class PlayerController : MonoBehaviour
             vel.x = Input.GetAxis("Horizontal") * speed;
             vel.y = trampJumpForce;
             rb.velocity = vel;
-
+            StartCoroutine(TrampHit(trampAnimTime));
         } 
         
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
 
-        Debug.Log("BOTTOMMMMM");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        // makes you bounce when you hit an enemy
-        //Vector2 vel = rb.velocity;
-        //if (col.tag == "Enemy" && vel.y < 0.0f)
-        //{
-        //    Debug.Log("collide with enemy");
-        //    vel.y = jumpforce / 2;
-        //}
-        //rb.velocity = vel;
+        if (col.gameObject.CompareTag("Bottom"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 
@@ -145,14 +132,11 @@ public class PlayerController : MonoBehaviour
 
         if (hit.collider != null || hitLeft.collider != null || hitRight.collider != null)
         {
-            Debug.Log("HIIII");
             grounded = true;
         } else
         {
             grounded = false;
-        }
-       
-        
+        }  
     }
 
     IEnumerator HammerHit(float time)
@@ -160,5 +144,12 @@ public class PlayerController : MonoBehaviour
         hammer = true;
         yield return new WaitForSeconds(time);
         hammer = false;
+    }
+
+    IEnumerator TrampHit(float time)
+    {
+        tramp = true;
+        yield return new WaitForSeconds(time);
+        tramp = false;
     }
 }

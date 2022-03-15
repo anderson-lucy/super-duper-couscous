@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5799380574985873055}
   - component: {fileID: -1532918255848621907}
   - component: {fileID: -234952355767014672}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: All Moles_4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.26952356, y: 0.7111523}
+  m_Offset: {x: -0.3533468, y: 0.7111523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4569834, y: 1.4391036}
+  m_Size: {x: 0.8869877, y: 1.4391036}
   m_EdgeRadius: 0
 --- !u!114 &-234952355767014672
 MonoBehaviour:
@@ -150,10 +150,18 @@ MonoBehaviour:
   - {fileID: 2845757988376959190, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
   - {fileID: 3841745665103501696, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
   - {fileID: 2946539338452393167, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
-  chugCount: 0
-  changeTimer: 0
+  explosionAnimation:
+  - {fileID: 5986030973748356752, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  - {fileID: -5600206312213581617, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  - {fileID: 3815954189206336483, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  - {fileID: -3690502768834906923, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  - {fileID: -49130668184793455, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  - {fileID: -2330519403281856691, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  - {fileID: -4796932125324312052, guid: ec299bdfe7292469f9b2eb6b33b1fe26, type: 3}
+  explosionWaitTime: 0.1
   speed: 1
   grounded: 0
+  isHurt: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

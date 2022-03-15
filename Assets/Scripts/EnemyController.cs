@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Enemy
 {
     public Sprite[] chugAnimation;
-    //public Sprite sprite;
-    public int chugCount;
-    private Rigidbody2D rb;
-    private SpriteRenderer mySpriteRenderer;
-    public float changeTimer;
-    private float animationtimer = .9f;
+    public Sprite[] explosionAnimation;
+    public float explosionWaitTime;
 
     public float speed;
     public bool grounded;
+    public bool isHurt = false;
     public LayerMask groundLayer;
     public float groundRayLength = .1f;
     public float groundRaySpread = .1f;
-
-    private int direction = 1;
     public float ledgeTestLeft;
     public float ledgeTestRight;
+
+    private int chugCount;
+    private Rigidbody2D rb;
+    private SpriteRenderer mySpriteRenderer;
+    private float changeTimer;
+    private float animationtimer = .2f;
+
+    private int direction = 1;
+
 
     private void Start()
     {
@@ -38,11 +42,21 @@ public class EnemyController : MonoBehaviour
 
         Vector2 vel = rb.velocity;
         vel.x = direction * speed;
+
+        if (isHurt)
+        {
+            vel.x = 0;
+        }
+
         rb.velocity = vel;
 
-        animate();
+        if (!isHurt)
+            animate();
+    }
 
-
+    public override void Hurt()
+    {
+        StartCoroutine(hurtSequence(explosionWaitTime));
     }
 
     void animate()
@@ -106,6 +120,7 @@ public class EnemyController : MonoBehaviour
         }
         return direction;
     }
+
     bool updateGrounding()
     {
         Vector3 rayStart = transform.position + Vector3.up * groundRayLength;
@@ -116,12 +131,27 @@ public class EnemyController : MonoBehaviour
         RaycastHit2D hitLeft = Physics2D.Raycast(rayStartLeft, Vector2.down, groundRayLength * 2, groundLayer);
         RaycastHit2D hitRight = Physics2D.Raycast(rayStartRight, Vector2.down, groundRayLength * 2, groundLayer);
         
-        if(hit.collider != null || hitLeft.collider != null || hitRight.collider != null)
+        if (hit.collider != null || hitLeft.collider != null || hitRight.collider != null)
         {
             grounded = true;
             return true;
         }
         grounded = false;
         return false;
+    }
+
+    IEnumerator hurtSequence(float time)
+    {
+        mySpriteRenderer.GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        isHurt = true;
+        
+        foreach (Sprite explode in explosionAnimation)
+        {
+            mySpriteRenderer.sprite = explode;
+            yield return new WaitForSeconds(time);
+        }
+
+        Destroy(gameObject);
     }
 }

@@ -24,7 +24,6 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer sRenderer;
     private PlayerController controller;
-    //private TestController controller;
 
     private float frameTimer = 0;
     private int frameIndex = 0;
@@ -36,7 +35,6 @@ public class PlayerAnimation : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         sRenderer = GetComponent<SpriteRenderer>();
         controller = GetComponent<PlayerController>();
-        //controller = GetComponent<TestController>();
 
         animationAtlas = new Dictionary<AnimationState, Sprite[]>();
         animationAtlas.Add(AnimationState.Idle, idleAnimation);
@@ -84,6 +82,10 @@ public class PlayerAnimation : MonoBehaviour
 
     AnimationState GetAnimationState()
     {
+        if (controller.tramp)
+        {
+            return AnimationState.Crouch;
+        }
         if ((!controller.grounded) && !isCrouching)
         {
             isCrouching = true;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundMole : MonoBehaviour
+public class GroundMole : Enemy
 {
     public Sprite[] hurtAnimation;
     public Sprite idleFrame;
@@ -22,24 +22,16 @@ public class GroundMole : MonoBehaviour
 
     }
 
-    public void Hurt()
+    public override void Hurt()
     {
         Debug.Log("hurt");
         StartCoroutine(hurtSequence(hurtWaitTime));
     }
 
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.tag == "Player" && collision.attachedRigidbody.velocity.y < 0.0f && hitCount < maxHitCount)
-    //    {
-    //        StartCoroutine(hurtSequence(hurtWaitTime));
-    //    }
-    //}
-
     IEnumerator hurtSequence(float time)
     {
+        yield return new WaitForSeconds(0.5f);
         sRenderer.GetComponent<BoxCollider2D>().enabled = false;
-        //hitCount++;
         sRenderer.sprite = hurtAnimation[0];
         yield return new WaitForSeconds(time);
         sRenderer.sprite = hurtAnimation[1];
