@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     public bool hammer = false;
     public float hammerWaitTime;
 
+    [Header("Attacking")]
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    
+
 
     [Header("Grounding")]
     public LayerMask groundMask;
@@ -90,9 +95,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag("Enemy")) //we can also make an enemy layer if we want
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (hammer)
+            {
+                Debug.Log("HURT ENEMY");
+                Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
+            } else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
         else if (col.gameObject.CompareTag("Trampoline") && rb.velocity.y < 0.0f)
         {
@@ -106,11 +118,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-       // if (col.gameObject.CompareTag("Bottom")
-       // {
-            Debug.Log("BOTTOMMMMM");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // }
+
+        Debug.Log("BOTTOMMMMM");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         // makes you bounce when you hit an enemy
         //Vector2 vel = rb.velocity;
