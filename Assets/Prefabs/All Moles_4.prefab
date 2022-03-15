@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7937144553936253005}
   - component: {fileID: 5799380574985873055}
   - component: {fileID: -1532918255848621907}
-  m_Layer: 0
+  - component: {fileID: -234952355767014672}
+  m_Layer: 7
   m_Name: All Moles_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,12 +100,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-1532918255848621907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,10 +119,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.26952356, y: 0.7111523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 2, y: 1.5625}
     newSize: {x: 1.4375, y: 1.5625}
     adaptiveTilingThreshold: 0.5
@@ -129,5 +130,34 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4375, y: 1.5625}
+  m_Size: {x: 1.4569834, y: 1.4391036}
   m_EdgeRadius: 0
+--- !u!114 &-234952355767014672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937144553936253004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f89cec9464e2945aec3c2fd1c1a697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chugAnimation:
+  - {fileID: 7241401975274971528, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
+  - {fileID: 5305099518255929371, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
+  - {fileID: 2845757988376959190, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
+  - {fileID: 3841745665103501696, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
+  - {fileID: 2946539338452393167, guid: 49926576f9a80495a9cbf32aa36a4ecb, type: 3}
+  chugCount: 0
+  changeTimer: 0
+  speed: 1
+  grounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundRayLength: 0.13
+  groundRaySpread: 0.97
+  ledgeTestLeft: 0.95
+  ledgeTestRight: 0.46
