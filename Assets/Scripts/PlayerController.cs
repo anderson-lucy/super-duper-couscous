@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     public float groundRayLength = 0.1f;
     public float groundRaySpread = 0.1f;
 
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
+            GUIManager.DeathCounting();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else if (col.gameObject.CompareTag("Trampoline") && rb.velocity.y < 0.0f)
@@ -116,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Bottom"))
         {
+            GUIManager.DeathCounting();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

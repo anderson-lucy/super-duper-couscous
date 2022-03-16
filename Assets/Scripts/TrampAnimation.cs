@@ -22,7 +22,7 @@ public class TrampAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player" && col.rigidbody.velocity.y < 0.0f)
+        if (col.gameObject.tag == "Player") //&& col.rigidbody.velocity.y < 0.0f)
         {
             Debug.Log("tramp hit");
             StartCoroutine(trampAnim(animDuration));

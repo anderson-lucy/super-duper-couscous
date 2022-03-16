@@ -144,6 +144,8 @@ public class EnemyController : Enemy
     {
         mySpriteRenderer.GetComponent<BoxCollider2D>().enabled = false;
         yield return new WaitForSeconds(0.5f);
+        Debug.Log("train mole hit");
+        GUIManager.EnemyCountdown();
         isHurt = true;
         
         foreach (Sprite explode in explosionAnimation)

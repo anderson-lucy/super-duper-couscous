@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Instructions.unity
     guid: a7f9286b5179e4782a973810e35d176b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: ac20df690ed702b40a74f45c89cb19f8
+  - enabled: 1
+    path: Assets/Scenes/Rik's Sprite Testing.unity
+    guid: 7ab9d84afc151450688d8f35cd9cb594
+  - enabled: 1
+    path: Assets/Scenes/TestLoadScene.unity
+    guid: f7fe9a97177974e3993066c46ea2b436
   m_configObjects: {}
