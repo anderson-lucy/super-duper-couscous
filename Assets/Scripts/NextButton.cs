@@ -12,7 +12,7 @@ public class NextButton : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void OnMouseDown()
+    public void LoadGame()
     {
         Debug.Log("ABOUT TO CHANGE SCENES");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
