@@ -890,11 +890,21 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 11, y: 1, z: 0}
+  - first: {x: 10, y: 1, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 13
       m_TileSpriteIndex: 13
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 11, y: 1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 12
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1286,7 +1296,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 082c3ee2eef164791ae7b14c8602def9, type: 2}
   - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: f343a2a29ecd543e3a09542cde1a1714, type: 2}
-  - m_RefCount: 28
+  - m_RefCount: 29
     m_Data: {fileID: 11400000, guid: bf743ff5508754027a159fcd82d4a387, type: 2}
   - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: 71df6370314874e89b7dd6618620998d, type: 2}
@@ -1315,12 +1325,12 @@ Tilemap:
     m_Data: {fileID: -6518242031988935372, guid: 1d229752993e7421f9aa2700231e7c66, type: 3}
   - m_RefCount: 15
     m_Data: {fileID: 54522180897507154, guid: 1d229752993e7421f9aa2700231e7c66, type: 3}
-  - m_RefCount: 28
+  - m_RefCount: 29
     m_Data: {fileID: -871907234539676369, guid: 1d229752993e7421f9aa2700231e7c66, type: 3}
   - m_RefCount: 15
     m_Data: {fileID: -7925157222857896072, guid: 1d229752993e7421f9aa2700231e7c66, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 85
+  - m_RefCount: 86
     m_Data:
       e00: 1
       e01: 0
@@ -1339,7 +1349,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 85
+  - m_RefCount: 86
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1726,7 +1736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5937599367406651798, guid: dd2ec4890b79e4d569682296896b58f3, type: 3}
       propertyPath: totalEnemies
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6863560592511956661, guid: dd2ec4890b79e4d569682296896b58f3, type: 3}
       propertyPath: m_RootOrder

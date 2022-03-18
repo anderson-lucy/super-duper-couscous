@@ -24,7 +24,6 @@ public class TrampAnimation : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" && col.rigidbody.velocity.y < -0.01f)
         {
-            Debug.Log("player vel.y " + col.rigidbody.velocity.y);
             StartCoroutine(trampAnim(animDuration));
         }
     }

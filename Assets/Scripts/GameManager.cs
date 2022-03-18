@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Winner")
+        {
+            //StartCoroutine(LoadCredits(3.0f));
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (SceneManager.GetActiveScene().name == "Start Menu")

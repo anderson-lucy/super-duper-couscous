@@ -16,18 +16,6 @@ public class GUIManager : MonoBehaviour
     private static int totalDeaths = 0;
     private static GUIManager instance;
 
-    //private void Awake()
-    //{
-    //    if (instance == null)
-    //        instance = this;
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    DontDestroyOnLoad(gameObject);
-    //}
-
     void Start()
     {
         instance = this;
