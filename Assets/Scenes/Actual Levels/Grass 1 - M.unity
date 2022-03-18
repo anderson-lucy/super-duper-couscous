@@ -1093,7 +1093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7937144553936253006, guid: cb78d0fb9db45fa479c690f1a38221af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2689223
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: 7937144553936253006, guid: cb78d0fb9db45fa479c690f1a38221af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1610,6 +1610,14 @@ PrefabInstance:
     - target: {fileID: 2051002543286403909, guid: dd2ec4890b79e4d569682296896b58f3, type: 3}
       propertyPath: m_Name
       value: GUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5937599365400465700, guid: dd2ec4890b79e4d569682296896b58f3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.012496948
+      objectReference: {fileID: 0}
+    - target: {fileID: 5937599366820159141, guid: dd2ec4890b79e4d569682296896b58f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.33605957
       objectReference: {fileID: 0}
     - target: {fileID: 5937599367406651798, guid: dd2ec4890b79e4d569682296896b58f3, type: 3}
       propertyPath: totalEnemies
