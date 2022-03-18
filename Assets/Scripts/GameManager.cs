@@ -35,20 +35,18 @@ public class GameManager : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Start Menu")
             {
-                //Debug.Log("Quitting Game");
-                //Application.Quit();
                 QuitGame();
             }
             else
             {
-                SceneManager.LoadScene("Start Menu");
+                LoadStartMenu();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name != "Start Menu" && SceneManager.GetActiveScene().name != "Instructions")
         {
+            LoadStartMenu();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Debug.Log("Restarting Level");
         }
     }
 
@@ -56,5 +54,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Qutting Game");
         Application.Quit();
+    }
+
+    public void LoadStartMenu()
+    {
+        GUIManager.resetDeathCounter();
+        SceneManager.LoadScene("Start Menu");
     }
 }

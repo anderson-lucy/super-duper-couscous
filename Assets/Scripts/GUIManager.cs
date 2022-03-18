@@ -27,14 +27,25 @@ public class GUIManager : MonoBehaviour
         levelCounter.text = "Level " + currentLevel;
     }
 
+    public static void resetDeathCounter()
+    {
+        instance._resetDeathCounter();
+    }
+
+    private void _resetDeathCounter()
+    {
+        totalDeaths = 0;
+    }
 
     public void LoadStartMenu()
     {
+        totalDeaths = 0;
         SceneManager.LoadScene("Start Menu");
     }
 
     public void ReloadLevel()
     {
+        totalDeaths = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
