@@ -45,7 +45,6 @@ public class GUIManager : MonoBehaviour
 
     public void ReloadLevel()
     {
-        totalDeaths = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

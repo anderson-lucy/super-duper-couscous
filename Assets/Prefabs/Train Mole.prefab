@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -234952355767014672}
   - component: {fileID: 572891455309891578}
   m_Layer: 8
-  m_Name: All Moles_4
+  m_Name: Train Mole
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

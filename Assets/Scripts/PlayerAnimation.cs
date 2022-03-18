@@ -108,10 +108,6 @@ public class PlayerAnimation : MonoBehaviour
         {
             return AnimationState.Walk;
         }
-        //if (controller.hammer)
-        //{
-        //    return AnimationState.Hammer;
-        //}
         return AnimationState.Idle;
     }
 }

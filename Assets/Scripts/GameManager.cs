@@ -26,11 +26,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Winner")
-        {
-            //StartCoroutine(LoadCredits(3.0f));
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (SceneManager.GetActiveScene().name == "Start Menu")
@@ -45,14 +40,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name != "Start Menu" && SceneManager.GetActiveScene().name != "Instructions")
         {
-            LoadStartMenu();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
     public void QuitGame()
     {
-        Debug.Log("Qutting Game");
         Application.Quit();
     }
 

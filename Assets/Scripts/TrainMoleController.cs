@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : Enemy
+public class TrainMoleController : Enemy
 {
     public Sprite[] chugAnimation;
     public Sprite[] explosionAnimation;

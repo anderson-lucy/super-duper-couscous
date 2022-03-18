@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //spr = GetComponent<SpriteRenderer>();
         myAudioSource = GetComponent<AudioSource>();
     }
 
@@ -51,12 +50,12 @@ public class PlayerController : MonoBehaviour
 
         UpdateGrounding();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded /*&& !isJumping*/) //also implement double jumping
+        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
         {
             vel.y = jumpforce;
             myAudioSource.PlayOneShot(jumpSound, volume);
         }
-        if (Input.GetKeyDown(KeyCode.W) && grounded /*&& !isJumping*/)
+        if (Input.GetKeyDown(KeyCode.W) && grounded)
         {
             vel.y = jumpforce;
 
@@ -114,10 +113,6 @@ public class PlayerController : MonoBehaviour
         {
             myAudioSource.PlayOneShot(trampSound);
             StartCoroutine(TrampHit(trampAnimTime));
-            //Vector2 vel = rb.velocity;
-            //vel.x = Input.GetAxis("Horizontal") * speed;
-            //vel.y = trampJumpForce;
-            //rb.velocity = vel;
         } 
         
     }
@@ -170,6 +165,4 @@ public class PlayerController : MonoBehaviour
         rb.velocity = vel;
         tramp = false;
     }
-    //need a way to tell if all moles are hit
-    //and then share this info with flower that turns into a door
 }

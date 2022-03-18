@@ -12,27 +12,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Instructions.unity
     guid: a7f9286b5179e4782a973810e35d176b
   - enabled: 1
-    path: Assets/Scenes/Actual Levels/Desert 1 - E.unity
+    path: Assets/Scenes/Desert 1 - E.unity
     guid: c3071a4cd7606474cbcdd61d7b44113f
   - enabled: 1
-    path: Assets/Scenes/Actual Levels/Grass 1 - M.unity
+    path: Assets/Scenes/Grass 1 - M.unity
     guid: 8b5d14d34c5e6a64d9e4a18aac010b5f
   - enabled: 1
-    path: Assets/Scenes/Actual Levels/Grass 2 - E.unity
+    path: Assets/Scenes/Grass 2 - E.unity
     guid: 3fd214a3bf44f704487300cb77a5a0c0
   - enabled: 1
-    path: Assets/Scenes/Actual Levels/Winter 2 - M.unity
+    path: Assets/Scenes/Winter 2 - M.unity
     guid: 08e80aa6a71f4584db3c83cf31bdf8ec
   - enabled: 1
-    path: Assets/Scenes/Actual Levels/Desert 2 - H.unity
+    path: Assets/Scenes/Desert 2 - H.unity
     guid: 07bc89b10a40cd1429390a0b20db6e59
   - enabled: 1
-    path: Assets/Scenes/Actual Levels/Winter 1 - H.unity
+    path: Assets/Scenes/Winter 1 - H.unity
     guid: f9c6e39388f24dd469e65cbd6104c66e
   - enabled: 1
     path: Assets/Scenes/Winner.unity
     guid: 8a1b3dedac9f1428aad58a2d452936fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Music Credits.unity
     guid: f54ed76db3fc5d74596aeb7bd1361b92
   m_configObjects: {}

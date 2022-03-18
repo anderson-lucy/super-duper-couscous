@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundMole : Enemy
+public class GroundMoleController : Enemy
 {
     public Sprite[] hurtAnimation;
     public Sprite idleFrame;
     public float hurtWaitTime;
 
     private SpriteRenderer sRenderer;
-    //private int maxHitCount = 1;
-    //private int hitCount = 0;
     private AudioSource myAudioSource;
     public float volume = 0.5f;
     public AudioClip groundHurtSound;
