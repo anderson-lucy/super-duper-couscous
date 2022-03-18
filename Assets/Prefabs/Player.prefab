@@ -195,7 +195,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundRayLength: 0.1
-  groundRaySpread: 0.6
+  groundRaySpread: 0.4
 --- !u!1 &8481668302048310209
 GameObject:
   m_ObjectHideFlags: 0
