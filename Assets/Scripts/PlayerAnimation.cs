@@ -100,14 +100,18 @@ public class PlayerAnimation : MonoBehaviour
             isCrouching = false;
             return AnimationState.Crouch;
         }
-        if (Mathf.Abs(rb2d.velocity.x) > 0.1f)
-        {
-            return AnimationState.Walk;
-        }
         if (controller.hammer)
         {
             return AnimationState.Hammer;
         }
+        if (Mathf.Abs(rb2d.velocity.x) > 0.1f)
+        {
+            return AnimationState.Walk;
+        }
+        //if (controller.hammer)
+        //{
+        //    return AnimationState.Hammer;
+        //}
         return AnimationState.Idle;
     }
 }
