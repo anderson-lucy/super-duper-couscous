@@ -102,11 +102,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (col.gameObject.CompareTag("Trampoline") && rb.velocity.y < 0.0f)
         {
-            Vector2 vel = rb.velocity;
-            vel.x = Input.GetAxis("Horizontal") * speed;
-            vel.y = trampJumpForce;
-            rb.velocity = vel;
             StartCoroutine(TrampHit(trampAnimTime));
+            //Vector2 vel = rb.velocity;
+            //vel.x = Input.GetAxis("Horizontal") * speed;
+            //vel.y = trampJumpForce;
+            //rb.velocity = vel;
         } 
         
     }
@@ -151,6 +151,11 @@ public class PlayerController : MonoBehaviour
     {
         tramp = true;
         yield return new WaitForSeconds(time);
+
+        Vector2 vel = rb.velocity;
+        vel.x = Input.GetAxis("Horizontal") * speed;
+        vel.y = trampJumpForce;
+        rb.velocity = vel;
         tramp = false;
     }
     //need a way to tell if all moles are hit

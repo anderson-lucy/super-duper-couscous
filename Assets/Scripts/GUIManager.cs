@@ -6,14 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
+    public Text levelCounter;
     public Text enemyCounter;
     public int totalEnemies;
     public Text deathCounter;
-
     public Text winText;
 
+    private int currentLevel;
     private static int totalDeaths = 0;
     private static GUIManager instance;
+
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //        instance = this;
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //        return;
+    //    }
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
     void Start()
     {
@@ -21,6 +34,20 @@ public class GUIManager : MonoBehaviour
         enemyCounter.text = totalEnemies.ToString();
         deathCounter.text = totalDeaths.ToString();
         winText.enabled = false;
+
+        currentLevel = SceneManager.GetActiveScene().buildIndex - 1;
+        levelCounter.text = "Level " + currentLevel;
+    }
+
+
+    public void LoadStartMenu()
+    {
+        SceneManager.LoadScene("Start Menu");
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public static void EnemyCountdown()
@@ -49,23 +76,13 @@ public class GUIManager : MonoBehaviour
         deathCounter.text = totalDeaths.ToString();
     }
 
-    //public void LevelUp()
-    //{
-    //    //display the level cleared text on the screen!
-    //    winText.enabled = true;
-    //    //wait for a few seconds
-    //    new WaitForSeconds(2.0f);
-    //    //move to the next level
-    //    Debug.Log("load scene");
-    //    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //}
-
     IEnumerator LevelUp()
     {
         //display the level cleared text on the screen!
         winText.enabled = true;
         //wait for a few seconds
         yield return new WaitForSeconds(2.0f);
+        winText.enabled = false;
         //move to the next level
         Debug.Log("load scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
