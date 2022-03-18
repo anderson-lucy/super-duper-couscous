@@ -35,8 +35,9 @@ public class GameManager : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Start Menu")
             {
-                Debug.Log("Quitting Game");
-                Application.Quit();
+                //Debug.Log("Quitting Game");
+                //Application.Quit();
+                QuitGame();
             }
             else
             {
@@ -49,5 +50,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Debug.Log("Restarting Level");
         }
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Qutting Game");
+        Application.Quit();
     }
 }
