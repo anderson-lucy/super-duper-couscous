@@ -11,10 +11,14 @@ public class GroundMole : Enemy
     private SpriteRenderer sRenderer;
     //private int maxHitCount = 1;
     //private int hitCount = 0;
+    private AudioSource myAudioSource;
+    public float volume = 0.5f;
+    public AudioClip groundHurtSound;
 
     void Start()
     {
         sRenderer = GetComponent<SpriteRenderer>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,6 +28,7 @@ public class GroundMole : Enemy
 
     public override void Hurt()
     {
+        myAudioSource.PlayOneShot(groundHurtSound, volume);
         StartCoroutine(hurtSequence(hurtWaitTime));
     }
 

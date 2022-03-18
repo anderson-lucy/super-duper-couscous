@@ -28,11 +28,19 @@ public class PlayerController : MonoBehaviour
     public float groundRayLength = 0.1f;
     public float groundRaySpread = 0.1f;
 
+    private AudioSource myAudioSource;
+    public float volume = 0.5f;
+    public AudioClip hammerSound;
+    public AudioClip jumpSound;
+    public AudioClip trampSound;
+    public AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         //spr = GetComponent<SpriteRenderer>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
 
@@ -46,7 +54,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded /*&& !isJumping*/) //also implement double jumping
         {
             vel.y = jumpforce;
-
+            myAudioSource.PlayOneShot(jumpSound, volume);
         }
         if (Input.GetKeyDown(KeyCode.W) && grounded /*&& !isJumping*/)
         {
@@ -74,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
+            myAudioSource.PlayOneShot(hammerSound);
             StartCoroutine(HammerHit(hammerWaitTime));
             Collider2D[] enemyHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
@@ -97,11 +106,13 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
+            myAudioSource.PlayOneShot(deathSound);
             GUIManager.DeathCounting();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else if (col.gameObject.CompareTag("Trampoline") && rb.velocity.y < 0.0f)
         {
+            myAudioSource.PlayOneShot(trampSound);
             StartCoroutine(TrampHit(trampAnimTime));
             //Vector2 vel = rb.velocity;
             //vel.x = Input.GetAxis("Horizontal") * speed;
@@ -115,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Bottom"))
         {
+            myAudioSource.PlayOneShot(deathSound);
             GUIManager.DeathCounting();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

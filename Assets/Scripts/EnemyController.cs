@@ -25,11 +25,16 @@ public class EnemyController : Enemy
 
     private int direction = 1;
 
+    private AudioSource myAudioSource;
+    public float volume = 0.5f;
+    public AudioClip trainHurtSound;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        myAudioSource = GetComponent<AudioSource>();
         chugCount = 0;
         changeTimer = animationtimer;
         
@@ -56,6 +61,7 @@ public class EnemyController : Enemy
 
     public override void Hurt()
     {
+        myAudioSource.PlayOneShot(trainHurtSound, volume);
         StartCoroutine(hurtSequence(explosionWaitTime));
     }
 
