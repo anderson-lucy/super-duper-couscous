@@ -166,7 +166,6 @@ MonoBehaviour:
   - {fileID: 4866940783672343453, guid: 3e6d60d48b1c945bfa1ae15b970bc117, type: 3}
   - {fileID: 7189186329465727109, guid: 3e6d60d48b1c945bfa1ae15b970bc117, type: 3}
   - {fileID: -5336037334550525388, guid: 3e6d60d48b1c945bfa1ae15b970bc117, type: 3}
-  isCrouching: 0
 --- !u!114 &583869002332469625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522593477172b4d8bacd7b7dc8720017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 6
   jumpforce: 8.5
   trampJumpForce: 11.5
   tramp: 0

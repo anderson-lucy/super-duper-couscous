@@ -14,13 +14,14 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     public float animationFPS;
+    [Header("Player Animation Sprites")]
     public Sprite[] idleAnimation;
     public Sprite[] walkAnimation;
     public Sprite[] jumpAnimation;
     public Sprite[] crouchAnimation;
     public Sprite[] hammerAnimation;
-    public bool isCrouching = false;
 
+    private bool isCrouching = false;
     private Rigidbody2D rb2d;
     private SpriteRenderer sRenderer;
     private PlayerController controller;

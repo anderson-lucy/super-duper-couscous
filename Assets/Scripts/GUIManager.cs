@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
+    [Header("UI Text")]
     public Text levelCounter;
     public Text enemyCounter;
     public int totalEnemies;
@@ -27,15 +28,6 @@ public class GUIManager : MonoBehaviour
         levelCounter.text = "Level " + currentLevel;
     }
 
-    public static void resetDeathCounter()
-    {
-        instance._resetDeathCounter();
-    }
-
-    private void _resetDeathCounter()
-    {
-        totalDeaths = 0;
-    }
 
     public void LoadStartMenu()
     {
@@ -46,6 +38,16 @@ public class GUIManager : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void resetDeathCounter()
+    {
+        instance._resetDeathCounter();
+    }
+
+    private void _resetDeathCounter()
+    {
+        totalDeaths = 0;
     }
 
     public static void EnemyCountdown()
@@ -82,7 +84,6 @@ public class GUIManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         winText.enabled = false;
         //move to the next level
-        Debug.Log("load scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

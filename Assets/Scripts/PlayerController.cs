@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public float groundRayLength = 0.1f;
     public float groundRaySpread = 0.1f;
 
+    [Header("Player Audio")]
     private AudioSource myAudioSource;
     public float volume = 0.5f;
     public AudioClip hammerSound;

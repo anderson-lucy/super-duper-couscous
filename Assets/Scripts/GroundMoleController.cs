@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GroundMoleController : Enemy
 {
+    [Header("Animation")]
     public Sprite[] hurtAnimation;
     public Sprite idleFrame;
     public float hurtWaitTime;
-
     private SpriteRenderer sRenderer;
+
+    [Header("Audio")]
     private AudioSource myAudioSource;
     public float volume = 0.5f;
     public AudioClip groundHurtSound;
@@ -34,7 +36,6 @@ public class GroundMoleController : Enemy
     {
         sRenderer.GetComponent<BoxCollider2D>().enabled = false;
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("ground mole hit");
         GUIManager.EnemyCountdown();
         sRenderer.sprite = hurtAnimation[0];
         yield return new WaitForSeconds(time);

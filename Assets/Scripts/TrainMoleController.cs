@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class TrainMoleController : Enemy
 {
+    [Header("Animation")]
     public Sprite[] chugAnimation;
     public Sprite[] explosionAnimation;
     public float explosionWaitTime;
+    private float changeTimer;
+    private float animationtimer = .2f;
 
+    [Header("Grounding")]
     public float speed;
-    public bool grounded;
     public bool isHurt = false;
+
     public LayerMask groundLayer;
+    public bool grounded;
     public float groundRayLength = .1f;
     public float groundRaySpread = .1f;
     public float ledgeTestLeft;
@@ -20,11 +25,9 @@ public class TrainMoleController : Enemy
     private int chugCount;
     private Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
-    private float changeTimer;
-    private float animationtimer = .2f;
-
     private int direction = 1;
 
+    [Header("Audio")]
     private AudioSource myAudioSource;
     public float volume = 0.5f;
     public AudioClip trainHurtSound;
@@ -110,9 +113,6 @@ public class TrainMoleController : Enemy
         Vector3 legdgeRayStartLeft = transform.position + Vector3.up * groundRayLength + Vector3.left * ledgeTestLeft;
         Vector3 legdgeRayStartRight = transform.position + Vector3.up * groundRayLength + Vector3.right * ledgeTestRight;
 
-        Debug.DrawLine(legdgeRayStartLeft, legdgeRayStartLeft + Vector3.down * groundRayLength * 2, Color.red);
-        Debug.DrawLine(legdgeRayStartRight, legdgeRayStartRight + Vector3.down * groundRayLength * 2, Color.red);
-
         RaycastHit2D hitLeft = Physics2D.Raycast(legdgeRayStartLeft, Vector2.down, groundRayLength * 2, groundLayer);
         RaycastHit2D hitRight = Physics2D.Raycast(legdgeRayStartRight, Vector2.down, groundRayLength * 2, groundLayer);
 
@@ -150,7 +150,6 @@ public class TrainMoleController : Enemy
     {
         mySpriteRenderer.GetComponent<BoxCollider2D>().enabled = false;
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("train mole hit");
         GUIManager.EnemyCountdown();
         isHurt = true;
         

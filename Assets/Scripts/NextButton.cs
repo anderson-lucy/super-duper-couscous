@@ -14,7 +14,6 @@ public class NextButton : MonoBehaviour
 
     public void LoadGame()
     {
-        Debug.Log("ABOUT TO CHANGE SCENES");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

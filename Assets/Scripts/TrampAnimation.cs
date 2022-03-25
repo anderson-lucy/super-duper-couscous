@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrampAnimation : MonoBehaviour
 {
+    [Header("Animation")]
     public Sprite trampolineDown;
     public Sprite trampolineUp;
     public float animDuration;

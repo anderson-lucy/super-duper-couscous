@@ -119,12 +119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  offsetX: 5
+  offsetX: 6
   offsetY: 2
   globalMinX: -9.38
   globalMaxX: 73.1
   globalMinY: -5.3
   globalMaxY: 8.38
+  smoothSpeed: 0.05
 --- !u!82 &-7345830523358844088
 AudioSource:
   m_ObjectHideFlags: 0
